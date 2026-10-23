@@ -4,7 +4,8 @@
 import pytest
 
 # First party imports
-from registration_api.app import app, registrations
+from registration_api.app import app
+from registration_api.blueprints.registration import registrations
 
 
 @pytest.fixture
