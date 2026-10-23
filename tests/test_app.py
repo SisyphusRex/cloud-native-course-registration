@@ -1,12 +1,16 @@
+# Standard Library imports
+
+# Third Party imports
 import pytest
 
-from registration_api import app as app_module
+# First party imports
+from registration_api.app import app, registrations
 
 
 @pytest.fixture
 def client():
-    app_module.registrations.clear()
-    return app_module.app.test_client()
+    registrations.clear()
+    return app.test_client()
 
 
 def test_list_courses(client):
@@ -21,7 +25,7 @@ def test_register(client):
     response = client.post("/register", json={"student": "John Smith", "course": "CS6030"})
     assert response.status_code == 201
     assert response.get_json() == {"status": "registered"}
-    assert app_module.registrations == [{"student": "John Smith", "course": "CS6030"}]
+    assert registrations == [{"student": "John Smith", "course": "CS6030"}]
 
 
 @pytest.mark.parametrize(
@@ -36,10 +40,10 @@ def test_register(client):
 def test_register_missing_fields(client, payload):
     response = client.post("/register", json=payload)
     assert response.status_code == 400
-    assert app_module.registrations == []
+    assert registrations == []
 
 
 def test_register_unknown_course(client):
     response = client.post("/register", json={"student": "John Smith", "course": "CS9999"})
     assert response.status_code == 404
-    assert app_module.registrations == []
+    assert registrations == []

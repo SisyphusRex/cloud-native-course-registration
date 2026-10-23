@@ -1,9 +1,13 @@
 """Course Registration API for CS6030 Assignment 2."""
 
+# Standard Library imports
 import os
 import uuid
 
+# Third Party imports
 from flask import Flask, jsonify, request
+
+# First party imports
 
 app = Flask(__name__)
 
@@ -67,9 +71,12 @@ COURSE_IDS = {course["id"] for course in COURSES}
 
 # Deliberately in-memory: lost on restart and not shared between instances.
 # This is the "bad" stateful design discussed in Part D of the report.
+# An alternative would be to save this information in a persistent database,
+# but that is outside the scope of this assignment, I think.
 registrations = []
 
 
+# main page
 @app.get("/")
 def index():
     return jsonify(
@@ -79,11 +86,13 @@ def index():
     )
 
 
+# courses page
 @app.get("/courses")
 def list_courses():
     return jsonify(COURSES)
 
 
+# register api
 @app.post("/register")
 def register():
     data = request.get_json(silent=True) or {}
@@ -99,12 +108,3 @@ def register():
 
     registrations.append({"student": student.strip(), "course": course})
     return jsonify(status="registered"), 201
-
-
-def main():
-    """Run the Flask development server (use gunicorn in production)."""
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
-
-
-if __name__ == "__main__":
-    main()
