@@ -15,7 +15,9 @@ ENV UV_COMPILE_BYTECODE=1 \
 COPY pyproject.toml uv.lock .python-version ./
 RUN uv sync --frozen --no-dev --no-install-project
 
-COPY app.py ./
+# Then install the registration_api package itself (non-editable).
+COPY src ./src
+RUN uv sync --frozen --no-dev --no-editable
 
 ENV PATH="/app/.venv/bin:$PATH"
 
@@ -23,4 +25,4 @@ EXPOSE 8080
 
 # Cloud Run injects PORT. A single worker keeps one in-memory registration list
 # per container; threads handle concurrent requests.
-CMD exec gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 app:app
+CMD exec gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 registration_api.app:app

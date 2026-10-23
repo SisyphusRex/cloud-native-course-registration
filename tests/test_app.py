@@ -1,6 +1,6 @@
 import pytest
 
-import app as app_module
+from registration_api import app as app_module
 
 
 @pytest.fixture

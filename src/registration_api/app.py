@@ -54,5 +54,10 @@ def register():
     return jsonify(status="registered"), 201
 
 
-if __name__ == "__main__":
+def main():
+    """Run the Flask development server (use gunicorn in production)."""
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+
+
+if __name__ == "__main__":
+    main()
