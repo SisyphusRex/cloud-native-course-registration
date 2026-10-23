@@ -1,0 +1,50 @@
+•  CS 5110 - Big Data
+  	•  CS 5115 - Programming Prep for Graduate Studies
+  	•  CS 5260 - Parallel Computations
+  	•  CS 5270 - Computer Graphics
+  	•  CS 5300 - Artificial Neural Systems
+  	•  CS 5310 - Algorithms
+  	•  CS 5410 - Game Programming
+  	•  CS 5430 - Database Systems
+  	•  CS 5541 - Computer Systems
+  	•  CS 5550 - Computer Networks and Distributed Systems
+  	•  CS 5560 - Network Programming
+  	•  CS 5610 - Advanced R Programming for Data Science
+  	•  CS 5700 - Computer Security and Information Assurance
+  	•  CS 5750 - Secure Software Development
+  	•  CS 5800 - Theory Foundations
+  	•  CS 5810 - Compiler Design and Implementation
+  	•  CS 5820 - Artificial Intelligence
+  	•  CS 5821 - Machine Learning
+  	•  CS 5822 - Natural Language Processing
+  	•  CS 5823 - Autonomous Vehicles for CS Majors
+  	•  CS 5950 - Advanced Topics in Computer and Information Science
+  	•  CS 5990 - Independent Study in Computer Science
+  	•  CS 6030 - Studies in Computer Science
+  	•  CS 6100 - Advanced Storage, Retrieval and Processing of Big Data
+  	•  CS 6110 - Data Science Foundations
+  	•  CS 6250 - Advanced Computer Architecture
+  	•  CS 6260 - Advanced Parallel Computations
+  	•  CS 6310 - Advanced Design and Analysis of Algorithms
+  	•  CS 6430 - Database Management System Implementation
+  	•  CS 6530 - Data Mining
+  	•  CS 6550 - Advanced Operating Systems
+  	•  CS 6560 - Advanced Computer Networks: Anatomy of the Internet
+  	•  CS 6570 - Wireless Networks
+  	•  CS 6580 - Pervasive Computing
+  	•  CS 6600 - Software Engineering
+  	•  CS 6610 - Software Testing
+  	•  CS 6700 - Advanced Computer and Information Security
+  	•  CS 6720 - Pattern Recognition
+  	•  CS 6800 - Advanced Theory of Computation
+  	•  CS 6810 - Compiler Optimization
+  	•  CS 6820 - Advanced Artificial Intelligence
+  	•  CS 6821 - Information Retrieval
+  	•  CS 6910 - Seminar in Computer Science
+  	•  CS 6970 - Master’s Project
+  	•  CS 7000 - Master’s Thesis
+  	•  CS 7100 - Independent Research
+  	•  CS 7120 - Professional Field Experience
+  	•  CS 7250 - Doctoral Research Seminar
+  	•  CS 7300 - Doctoral Dissertation
+  	•  CS 7350 - Graduate Research
