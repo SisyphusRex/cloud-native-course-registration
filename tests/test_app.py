@@ -12,7 +12,9 @@ def client():
 def test_list_courses(client):
     response = client.get("/courses")
     assert response.status_code == 200
-    assert {"id": "CS6030", "title": "Cloud Computing"} in response.get_json()
+    courses = response.get_json()
+    assert len(courses) == 50
+    assert {"id": "CS6030", "title": "Cloud Computing"} in courses
 
 
 def test_register(client):
