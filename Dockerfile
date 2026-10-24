@@ -28,5 +28,5 @@ EXPOSE 8080
 
 # Cloud Run injects PORT. A single worker keeps one in-memory registration list
 # per container; threads handle concurrent requests.
-# PORT is an environment variable, set to 8080, 
-CMD exec gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 wsgi:app
+# sh -c expands $PORT; exec makes gunicorn PID 1 so it receives SIGTERM.
+CMD ["sh", "-c", "exec gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 wsgi:app"]
