@@ -1,6 +1,10 @@
 name: Test
 
 on:
+  # Running on development pushes puts a passing check on the commit before
+  # it is fast-forwarded onto main, which the main ruleset requires.
+  push:
+    branches: [development]
   pull_request:
     branches: [main]
   # Lets deploy.yml run the same tests before deploying.
