@@ -1,9 +1,10 @@
-"""Course catalog endpoint."""
+"""Course catalog endpoints."""
 
 # Standard Library imports
 
 # Third Party imports
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
+from flask.views import MethodView
 
 # First party imports
 
@@ -65,7 +66,61 @@ COURSES = [
 COURSE_IDS = {course["id"] for course in COURSES}
 
 
+def find_course(course_id):
+    return next((course for course in COURSES if course["id"] == course_id), None)
+
+
 # courses page
-@courses_bp.get("/courses")
-def list_courses():
-    return jsonify(COURSES)
+class CoursesAPI(MethodView):
+    def get(self):
+        return jsonify(COURSES)
+
+    # Stubs: not part of the API yet.
+    def post(self):
+        return jsonify(error="not implemented"), 501
+
+    def put(self):
+        return jsonify(error="not implemented"), 501
+
+    def delete(self):
+        return jsonify(error="not implemented"), 501
+
+
+# single course
+class CourseAPI(MethodView):
+    def get(self, course_id):
+        course = find_course(course_id)
+        if course is None:
+            return jsonify(error=f"unknown course '{course_id}'"), 404
+        return jsonify(course)
+
+    def put(self, course_id):
+        course = find_course(course_id)
+        if course is None:
+            return jsonify(error=f"unknown course '{course_id}'"), 404
+
+        data = request.get_json(silent=True) or {}
+        title = data.get("title")
+        if not isinstance(title, str) or not title.strip():
+            return jsonify(error="'title' is required"), 400
+
+        course["title"] = title.strip()
+        return jsonify(course)
+
+    def delete(self, course_id):
+        course = find_course(course_id)
+        if course is None:
+            return jsonify(error=f"unknown course '{course_id}'"), 404
+
+        # Update COURSE_IDS in place; registration.py holds a reference to it.
+        COURSES.remove(course)
+        COURSE_IDS.discard(course_id)
+        return "", 204
+
+    # Stub: not part of the API yet.
+    def post(self, course_id):
+        return jsonify(error="not implemented"), 501
+
+
+courses_bp.add_url_rule("", view_func=CoursesAPI.as_view("list_courses"))
+courses_bp.add_url_rule("/<course_id>", view_func=CourseAPI.as_view("course"))

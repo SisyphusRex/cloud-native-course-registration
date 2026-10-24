@@ -12,6 +12,8 @@ from registration_api.blueprints.registration import registration_bp
 
 app = Flask(__name__)
 
-app.register_blueprint(index_bp)
-app.register_blueprint(courses_bp)
-app.register_blueprint(registration_bp)
+# Here, we are registering the API endpoints and the
+# url prefix that points to them.
+app.register_blueprint(index_bp, url_prefix="/")
+app.register_blueprint(courses_bp, url_prefix="/courses")
+app.register_blueprint(registration_bp, url_prefix="/register")
